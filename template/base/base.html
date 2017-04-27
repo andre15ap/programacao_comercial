@@ -1,0 +1,94 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+	<head>
+    <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<link href="{% static 'materialize/css/config.css' %}" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{% static 'materialize/css/materialize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+
+		{% block extrastatic %}
+		<link rel="stylesheet" href="{% static 'css/material.min.css' %}">
+		{% endblock %}
+
+		<title>{% block titulo %} titulo {% endblock %}</title>
+
+  </head>
+  <body>
+		{% block navbar %}
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+      <header class="demo-header mdl-layout__header mdl-color--blue-grey-800 mdl-color-text--grey-600">
+        <div class="mdl-layout__header-row">
+          <a href="{% url 'index' %}" ><span class="mdl-layout-title white-text">Home</span></a>
+          <div class="mdl-layout-spacer"></div>
+
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+            <i class="material-icons white-text">more_vert</i>
+          </button>
+          <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+            <li class="mdl-menu__item"><i class="material-icons right">description</i>Sobre</li>
+            <a href="{% url 'logout' %}"><li class="mdl-menu__item"><i class="material-icons right">power_settings_new</i>Sair</li></a>
+          </ul>
+        </div>
+      </header>
+      <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+        <header class="demo-drawer-header">
+          <img src="{% static 'img/user.png' %}" class="demo-avatar">
+          <div class="demo-avatar-dropdown">
+            <span>Bem vindo {{user.email}}</span>
+            <div class="mdl-layout-spacer"></div>
+            <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+              <i class="material-icons" role="presentation">arrow_drop_down</i>
+              <span class="visuallyhidden">Accounts</span>
+            </button>
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+              <li class="mdl-menu__item"><i class="material-icons">account_circle</i>{{user.get_username}}</li>
+              <a href="{% url 'logout' %}"><li class="mdl-menu__item"><i class="material-icons">power_settings_new</i>Sair</li></a>
+            </ul>
+          </div>
+        </header>
+        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+          <a class="mdl-navigation__link" href="{% url 'index' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
+          <a class="mdl-navigation__link" href="{% url 'jogo:jogo_listar' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">gamepad</i>Jogos</a>
+          <a class="mdl-navigation__link" href="{% url 'jogo:jogo_criar' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">add_to_photos</i>Add Jogo</a>
+          <a class="mdl-navigation__link" href="{% url 'index' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">view_list</i>Meus Jogos</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">assignment</i>Solicitações</a>
+
+
+        </nav>
+      </div>
+			{% endblock %}
+      <main class="mdl-layout__content mdl-color--grey-100">
+
+        {% block content %}
+
+				<h4>bloco contente</h4>
+
+				<a href="#" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">View Source</a>
+				{% endblock %}
+
+      </main>
+
+    </div>
+
+
+
+		{% block footer %}
+		{% endblock %}
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'materialize/js/materialize.min.js' %}"></script>
+		<script src="{% static 'js/material.min.js' %}"></script>
+
+	{% block extrajs %}
+	<script src="{% static 'js/meuscript.js' %}"></script>
+	{% endblock %}
+
+
+
+</body>
+</html>

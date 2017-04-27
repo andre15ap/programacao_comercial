@@ -1,0 +1,59 @@
+{% extends 'base/base.html' %}
+
+{% block titulo %}
+	Index
+{% endblock %}
+
+{% block usuario %}
+	{{user.get_username}}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+
+	<h4 class="center-align">Bem vindo {{user.get_username}}</h4>
+
+<div class="col s10 offset-s1 ">
+	<table class="bordered responsive-table">
+		<thead>
+			<tr>
+				<td ><p><b>Nome do Jogo</b></p></td>
+				<td ><p><b>Categoria</b></p></td>
+				<td ><p><b>Plataforma</b></p></td>
+				<td ><p><b><h6 class="center">Ações</h6></p></b></td>
+			</tr>
+		</thead>
+		<tbody>
+		{% if object_list %}
+		{% for jogo in object_list %}
+			<tr>
+				<td class="meuid">{{jogo.nome}}</td>
+				<td class="meuid">{{jogo.categoria}}</td>
+				<td class="meuid">{{jogo.plataforma.nome}}</td>
+				<td class="center">
+				   <a class="btn green" href="{% url 'jogo:jogo_editar' jogo.id %}"><i class="material-icons">border_color</i></a>
+				   <a class="btn red" href="{% url 'jogo:jogo_deletar' jogo.id %}"><i class="material-icons">delete</i></a>
+				   <a class="btn blue" href="{% url 'jogo:jogo_ver_atual' jogo.id %}"><i class="material-icons">visibility</i></a>
+				</td>
+				</td>
+			</tr>
+			{% endfor %}
+			{% else %}
+			<h2>Não há registros de jogos</h2>
+
+			{% endif %}
+		</tbody>
+	</table>
+
+
+</div>
+
+<div class="fixed-action-btn">
+	<a href="{% url 'jogo:jogo_criar' %}" class="btn-floating btn-large  blue">
+		<i class="large material-icons">add</i>
+	</a>
+</div>
+</div>
+
+
+{% endblock %}

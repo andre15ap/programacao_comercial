@@ -1,0 +1,75 @@
+
+{% extends 'base/base.html' %}
+
+{% block titulo %}
+	Adicionando Usuario
+{% endblock %}
+
+{% block extrastatic %}
+{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+{% block content %}
+
+<div class="row">
+  <div class="col s8 offset-s2 card">
+		<h4 class="center">Preencha o Formulario</h4>
+	<form class=" container" method="post">
+		{% csrf_token %}
+
+
+		<div class="row">
+			<div class="input-field">
+				<label for="first_name" data-error="wrong" data-success="right">Nome</label>
+				<input class="validate" type="text" name="first_name" required="true">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-field">
+				<label for="last_name" data-error="wrong" data-success="right">Sobrenome</label>
+				<input class="validate" type="text" name="last_name" required="true">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-field">
+				<label for="username" data-error="wrong" data-success="right">Nome de Usuario</label>
+				<input class="validate" type="text" name="username" required="true">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-field">
+				<label for="email" data-error="wrong" data-success="right">Email</label>
+				<input class="validate" type="email" name="email" required="true">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-field">
+				<label for="password1" data-error="wrong" data-success="right">Senha</label>
+				<input class="validate" type="password" name="password1" required="true">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-field">
+				<label for="password2" data-error="wrong" data-success="right">Confirmar Senha</label>
+				<input class="validate" type="password" name="password2" required="true">
+			</div>
+		</div>
+
+
+		<div class="row">
+					<button class="btn green" type="submit">Salvar</button>
+					<a class="btn" href="{% url 'login' %}">Cancelar</a>
+		</div>
+
+
+
+	</form>
+</div>
+</div>
+{% endblock %}

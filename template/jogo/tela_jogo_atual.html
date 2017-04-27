@@ -1,0 +1,56 @@
+{% extends 'base/base.html' %}
+
+{% block titulo %}
+	Jogo
+{% endblock %}
+
+{% block usuario %}
+	{{user.get_username}}
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+       <div class="col s10 offset-s1 card">
+         <div class="card blue-grey lighten-1">
+           <div class="card-content white-text">
+             <span class="card-title center">Jogo {{object.nome}}</span></span>
+
+
+            <div class="divider"></div>
+              <div class="section inline">
+
+                <p><span class="tam">Usuario:</span><span class="tam2"> {{object.usuario.username}}</span></p>
+              </div>
+
+              <div class="divider"></div>
+              <div class="section">
+                <p><span class="tam">Nome do Jogo: </span><span class="tam2">{{object.nome}}</span></p>
+              </div>
+
+              <div class="divider"></div>
+              <div class="section">
+                <p><span class="tam">Categoria: </span><span class="tam2">{{object.categoria}}</span> </p>
+              </div>
+
+              <div class="divider"></div>
+              <div class="section">
+                <p><span class="tam">Plataforma: </span> <span class="tam2">{{object.plataforma.nome}}</span></p>
+              </div>
+
+              <div class="divider"></div>
+              <div class="section">
+                <p class="tam">Descrição do Jogo</p>
+                <p><span class="tam2">{{object.descricao}}</span></p>
+              </div>
+
+
+           </div>
+           <div class="card-action">
+             <a class="btn" href="{% url 'index' %}"><i class="material-icons right">replay</i>Voltar</a>
+           </div>
+         </div>
+       </div>
+</div>
+
+{% endblock %}

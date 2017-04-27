@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+
+{% block titulo %}
+	Listando Jogos
+{% endblock %}
+
+
+{% block content %}
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<td>id</td>
+				<td>usuario</td>
+				<td>Primeiro nome</td>
+				<td>sobrenome</td>
+				<td>email</td>
+				<td>Ações</td>
+			</tr>
+		</thead>
+		<tbody>
+		{% if object_list %}
+		{% for usuario in object_list %}
+			<tr>
+				<td>{{usuario.id}}</td>
+				<td>{{usuario.username}}</td>
+				<td>{{usuario.first_name}}</td>
+				<td>{{usuario.last_name}}</td>
+				<td>{{usuario.email}}</td>
+				<td>
+				   <a class="btn btn-primary" href="#">Editar</a>
+				   <a class="btn btn-danger" href="#">Excluir</a>
+				</td>
+				</td>
+			</tr>
+			{% endfor %}
+			{% else %}
+			<h2>Não há registros de jogos</h2>
+
+			{% endif %}
+		</tbody>
+	</table>
+{% endblock %}
