@@ -4,6 +4,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView, D
 from django.core.urlresolvers import reverse_lazy
 from django.db.models import Q
 from apps.jogo.forms import JogoForm
+from apps.solicitacao.form import SolicitacaoForm
 from apps.jogo.models import Jogo
 
 
@@ -34,10 +35,14 @@ class JogoVer(DetailView):
 	model = Jogo
 	template_name = 'jogo/tela_jogo.html'
 
+
+
 class JogoVerAtual(DetailView):
 	"""classe para ver jogo a partir do index jogos"""
 	model = Jogo
+	form_class = SolicitacaoForm
 	template_name = 'jogo/tela_jogo_atual.html'
+
 
 
 class JogoCreate(CreateView):

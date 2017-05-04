@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-
+from django.conf.urls.static import static
 from apps.plataforma.models import plataforma
 from django.contrib.auth.models import User
 from PIL import Image

@@ -12,3 +12,14 @@
   color: #311b92;
   font-weight: bold;
 }
+
+.buscando{
+  font-size: 20px;
+  font-weight: bold;
+  color: orange;
+}
+
+.minhaimg{
+  width: 200px;
+  height: 200px;
+}

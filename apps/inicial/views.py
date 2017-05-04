@@ -9,5 +9,5 @@ class index(ListView):
 	template_name = 'inicial/index.html'
 
 	def get_queryset(self):
-		queryset = Jogo.objects.filter(usuario=self.request.user)
+		queryset = Jogo.objects.filter(usuario=self.request.user).order_by('nome')
 		return queryset

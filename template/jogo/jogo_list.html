@@ -1,5 +1,7 @@
 {% extends 'base/base.html' %}
 
+{% load staticfiles %}
+
 {% block titulo %}
 	Listando Jogos
 {% endblock %}
@@ -15,6 +17,7 @@
 <ul class="collection with-header">
 
 <li class="collection-heade center-align"><h4>Todos os jogos</h4></li>
+
 	{% if object_list %}
 
 	<div class="row blue-grey-400">
@@ -22,21 +25,36 @@
 		<div class="col s4 center"><h5>Categoria</h5></div>
 		<div class="col s4 center"><h5>Plataforma</h5></div>
 	</div>
+
+
+
+
+
 	{% for jogo in object_list %}
 
-        <a href="{% url 'jogo:jogo_ver' jogo.id %}" class="collection-item">
-						<div class="row meuid">
-							<div class="col s4 "><span class="black-text">{{jogo.nome}}</span></div>
-							<div class="col s4 ">{{jogo.categoria}}</div>
-							<div class="col s4 ">{{jogo.plataforma.nome}}</div>
-						</div>
+	  <a href="{% url 'jogo:jogo_ver' jogo.id %}" class="collection-item">
+				<div class="row meuid">
+					<div class="col s4 ">
+						{% if jogo.image %}
+							<img src="{{ jogo.image.url }}" class="demo-avatar">
+						{% else %}
+							<img src="{% static 'img/image.png' %}" class="demo-avatar">
+						{% endif %}
+						<span class="black-text">{{jogo.nome}}</span></div>
+					<div class="col s4 ">
 
-				</a>
-				{% endfor %}
-				{% else %}
-				<h2>Não há registros de jogos</h2>
-				{% endif %}
-      </ul>
+						{{jogo.categoria}}
+
+					</div>
+					<div class="col s4 ">{{jogo.plataforma.nome}}</div>
+				</div>
+
+		</a>
+	{% endfor %}
+	{% else %}
+	<h2>Não há registros de jogos</h2>
+	{% endif %}
+</ul>
 
 </div>
 <!-- href="{% url 'jogo:jogo_buscar' %}?busca=pro" -->
@@ -47,9 +65,8 @@
 	</a>
 	<ul>
 		<li>
-			<form action="{% url 'jogo:jogo_buscar' %}?busca" method="get">
-			<input placeholder="digite sua busca" name="busca" type="text" class="validate red-text">
-      <label for="busca">Busca</label>
+			<form class="buscando" action="{% url 'jogo:jogo_buscar' %}?busca" method="get">
+			<input placeholder="digite sua busca" name="busca" type="text" class="validate" style="font-size:20px;color:black;font-weight:bold">
 			</form>
 
 		</li>

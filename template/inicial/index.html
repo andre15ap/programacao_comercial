@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load staticfiles %}
 
 {% block titulo %}
 	Index
@@ -27,7 +28,14 @@
 		{% if object_list %}
 		{% for jogo in object_list %}
 			<tr>
-				<td class="meuid">{{jogo.nome}}</td>
+				<td class="meuid">
+					{% if jogo.image %}
+						<img src="{{ jogo.image.url }}" class="demo-avatar">
+					{% else %}
+						<img src="{% static 'img/image.png' %}" class="demo-avatar">
+					{% endif %}
+					{{jogo.nome}}
+				</td>
 				<td class="meuid">{{jogo.categoria}}</td>
 				<td class="meuid">{{jogo.plataforma.nome}}</td>
 				<td class="center">

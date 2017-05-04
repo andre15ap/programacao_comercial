@@ -2,6 +2,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from apps.jogo import views
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^novo$', login_required(views.JogoCreate.as_view()), name='jogo_criar'),
@@ -12,4 +14,4 @@ urlpatterns = [
     url(r'^ver/(?P<pk>\d+)$', login_required(views.JogoVer.as_view()), name='jogo_ver'),
     url(r'^veratual/(?P<pk>\d+)$', login_required(views.JogoVerAtual.as_view()), name='jogo_ver_atual'),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.STATIC_ROOT)

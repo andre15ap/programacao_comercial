@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'apps.jogo',
     'apps.plataforma',
     'apps.inicial',
+    'apps.solicitacao',
 ]
 
 MIDDLEWARE = [

@@ -40,7 +40,7 @@
         <header class="demo-drawer-header">
           <img src="{% static 'img/user.png' %}" class="demo-avatar">
           <div class="demo-avatar-dropdown">
-            <span>Bem vindo {{user.email}}</span>
+            <span>Bem vindo {{user.get_username}}</br>{{user.email}}</span>
             <div class="mdl-layout-spacer"></div>
             <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
               <i class="material-icons" role="presentation">arrow_drop_down</i>
@@ -57,7 +57,7 @@
           <a class="mdl-navigation__link" href="{% url 'jogo:jogo_listar' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">gamepad</i>Jogos</a>
           <a class="mdl-navigation__link" href="{% url 'jogo:jogo_criar' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">add_to_photos</i>Add Jogo</a>
           <a class="mdl-navigation__link" href="{% url 'index' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">view_list</i>Meus Jogos</a>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">assignment</i>Solicitações</a>
+          <a class="mdl-navigation__link" href="{% url 'solicitacao:solicitacao_listar' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">assignment</i>Solicitações</a>
 
 
         </nav>
