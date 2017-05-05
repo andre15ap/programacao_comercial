@@ -18,8 +18,23 @@
   font-weight: bold;
   color: orange;
 }
+.log{
+  margin-top: 50px;
+}
 
 .minhaimg{
-  width: 200px;
+
+  width: 150px;
   height: 200px;
+  max-width: 150px;
+  max-height: 200px;
+  min-width: 150px;
+  min-height: 200px;
+  float:none;
+  display:block;
+  margin-top: 25px;
+  margin-left:auto;
+  margin-right:auto;
+
+  background-color: rgba(255, 255, 255, 0.56);
 }
