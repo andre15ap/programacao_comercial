@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 class Solicitacao(models.Model):
 
-    jogo = models.ForeignKey(Jogo, null=False, blank=False, on_delete=models.CASCADE)
-    solicitante = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
+    jogo = models.ForeignKey(Jogo)
+    solicitante = models.ForeignKey(User, related_name="solicitacoes")
+    solicitado = models.ForeignKey(User, related_name="solicitados")
     estado = models.CharField(max_length = 50)

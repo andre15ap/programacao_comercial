@@ -17,57 +17,6 @@
 			{% csrf_token %}
 		-->
 			<div class="row">
-		     <!-- <form class=" container" method="post">
-					 {% csrf_token %}
-
-					 <div class="row">
-						 <div class="input-field">
-
-							  {{form.nome}}
-								<label for="{{form.nome.name}}" data-success="right">Nome</label>
-						 </div>
-					 </div>
-					 <div class="row">
-		         <div class="input-field ">
-
-
-							  {{form.categoria}}
-								 <label for="{{form.categoria.name}}" data-success="right">Categoria</label>
-		         </div>
-		       </div>
-
-					 <div class="row">
-		         <div class="input-field ">
-
-		           <label for="{{form.descricao.name}}" data-success="right">Descrição</label>
-							 {{form.descricao}}
-		         </div>
-		       </div>
-
-					 <div class="input-field">
-								{{form.plataforma}}
-					    <label for="{{form.plataforma.name}}">Plataforma</label>
-
-		  			</div>
-
-						<div class="file-field input-field">
-							 <div class="btn">
-								 <span>Imagem</span>
-								 {{form.plataforma}}
-							 </div>
-							 <div class="file-path-wrapper">
-								 <input class="file-path validate" type="text" placeholder="Upload a imagem">
-							 </div>
-						 </div>
-
-					 <div class="row">
-						 <div class="input-field col ">
-								 <button class="btn green darken-4" type="submit"><i class="material-icons right">save</i>Salvar</button>
-								 <a class="btn" href="{% url 'index' %}"><i class="material-icons right">highlight_off</i>Cancelar</a>
-						 </div>
-					 </div>
-
-		     </form> -->
 
 				 <form class="" enctype="multipart/form-data" method="post">
 					 {% csrf_token %}
@@ -76,7 +25,7 @@
 						 <div class="input-field">
 
 							  {{form.nome}}
-								<label  data-success="right">Nome</label>
+								<label data-success="right">Nome</label>
 						 </div>
 					 </div>
 					 <div class="row">

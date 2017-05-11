@@ -9,6 +9,7 @@
 	{{user.get_username}}
 {% endblock %}
 
+
 {% block content %}
 
 <div class="row">
@@ -17,7 +18,7 @@
 
 					 <div class="row">
 
-					 <div class="card-content white-text col l4">
+					 <div class="card-content white-text col l3">
 						 <!-- <div class="divider"></div> -->
 							 <div class="section inline">
 								{% if object.image %}
@@ -28,7 +29,7 @@
 							 </div>
 					 </div>
 
-           <div class="card-content white-text col l8">
+           <div class="card-content white-text col l9">
 
 							<span class="card-title center">Jogo: {{object.nome}}</span></span>
 
@@ -59,7 +60,24 @@
 				 <div class="row">
 					 <div class="card-action">
 			   <a class="btn" href="{% url 'jogo:jogo_listar' %}"><i class="material-icons right">highlight_off</i>Cancelar</a>
-         <button type="submit" class="btn  light-green accent-4"><i class="material-icons right">shuffle</i>Solicitar</button>
+
+				 <a  href="{% url 'solicitacao:solicitar' %}?jogo={{object.id}}" method="get" class="btn  light-green accent-4"><i class="material-icons right">shuffle</i>Solicitar</a>
+
+
+				 <a class="waves-effect waves-light btn" href="#modal1">Modal</a>
+					<!-- Modal Structure -->
+					<div id="modal1" class="modal">
+						<div class="modal-content">
+							<h4>Confirmar Solicitação</h4>
+							<p>Confirmar Solicitação</p>
+						</div>
+						<div class="modal-footer">
+							<a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Sim</a>
+							<a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">não</a>
+						</div>
+					</div>
+
+
 			 </div>
 			</div>
 

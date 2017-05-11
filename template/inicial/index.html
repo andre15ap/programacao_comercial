@@ -9,6 +9,10 @@
 	{{user.get_username}}
 {% endblock %}
 
+{% block busca %}
+{% endblock %}
+
+
 {% block content %}
 <div class="row">
 
@@ -39,7 +43,7 @@
 				<td class="meuid">{{jogo.categoria}}</td>
 				<td class="meuid">{{jogo.plataforma.nome}}</td>
 				<td class="center">
-				   <a class="btn green" href="{% url 'jogo:jogo_editar' jogo.id %}"><i class="material-icons">border_color</i></a>
+				   <a class="btn green accent-3" href="{% url 'jogo:jogo_editar' jogo.id %}"><i class="material-icons">border_color</i></a>
 				   <a class="btn red" href="{% url 'jogo:jogo_deletar' jogo.id %}"><i class="material-icons">delete</i></a>
 				   <a class="btn blue" href="{% url 'jogo:jogo_ver_atual' jogo.id %}"><i class="material-icons">visibility</i></a>
 				</td>
@@ -57,7 +61,7 @@
 </div>
 
 <div class="fixed-action-btn">
-	<a href="{% url 'jogo:jogo_criar' %}" class="btn-floating btn-large  blue">
+	<a href="{% url 'jogo:jogo_criar' %}" class="btn-floating btn-large   light-green accent-4">
 		<i class="large material-icons">add</i>
 	</a>
 </div>

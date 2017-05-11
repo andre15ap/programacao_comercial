@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+
+{% block titulo %}
+	Listando Jogos
+{% endblock %}
+
+{% block usuario %}
+	{{user.get_username}}
+{% endblock %}
+
+
+{% block content %}
+
+
+<h2>Jogo: {{solicitacao.jogo.nome}}</h2>
+<h2>solicitante {{solicitacao.solicitante}}</h2>
+<h2>solicitado {{solicitacao.solicitado}}</h2>
+<h2>estado {{solicitacao.estado}}</h2>
+
+
+{% endblock %}

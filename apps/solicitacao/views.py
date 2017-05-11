@@ -1,27 +1,39 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
-from apps.solicitacao import models
+from django.views.generic import View, ListView, CreateView, UpdateView, DeleteView, DetailView
+from apps.solicitacao.models import Solicitacao
+from apps.jogo.models import Jogo
 from django.core.urlresolvers import reverse_lazy
 
 # Create your views here.
 
-class SolicitacaoList(ListView):
-	"""classe para listar solicitações"""
-	model = models.Solicitacao
-	template_name = 'solicitacao/solicitacao_list.html'
+class SolicitarList(View):
+	def get(self, request):
+		context = {
+		'object_list': Solicitacao.objects.all()
+		}
+		return render(request, 'solicitacao/solicitacao_list.html', context)
 
-	# def get_queryset(self):
-	# 	return Jogo.objects.exclude(usuario = self.request.user).order_by('nome')
 
-class SolicitacaoCreate(CreateView):
-	"""classe para Criar novos solicitação"""
-	model = models.Solicitacao
-	# form_class = SolicitacaoForm
-	template_name = 'solicitacao/solicitacao_create.html'
-	success_url = reverse_lazy('index')
 
-	# def form_valid(self, form):
-	# 	obj = form.save(commit=False)
-	# 	obj.usuario = self.request.user
-	# 	obj.save()
-	# 	return HttpResponseRedirect(self.success_url)
+
+class Solicitar(View):
+	def get(self, request):
+
+		jogo_id = self.request.GET.get('jogo', 0)
+
+		jogo = Jogo.objects.get(id=jogo_id)
+
+
+		solicitacao = Solicitacao(
+			jogo=jogo,
+			solicitante=self.request.user,
+			solicitado=jogo.usuario,
+			estado="teste"
+		)
+		solicitacao.save()
+
+
+		context = {
+			'solicitacao': solicitacao,
+		}
+		return render(request, 'solicitacao/solicitar.html', context)

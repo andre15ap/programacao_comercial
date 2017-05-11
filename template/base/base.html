@@ -27,13 +27,22 @@
           <a href="{% url 'index' %}" ><span class="mdl-layout-title white-text">Home</span></a>
           <div class="mdl-layout-spacer"></div>
 
+          {% block busca %}
+
+          {% endblock %}
+
           <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
             <i class="material-icons white-text">more_vert</i>
           </button>
+
           <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
             <li class="mdl-menu__item"><i class="material-icons right">description</i>Sobre</li>
             <a href="{% url 'logout' %}"><li class="mdl-menu__item"><i class="material-icons right">power_settings_new</i>Sair</li></a>
           </ul>
+
+
+
+
         </div>
       </header>
       <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
@@ -56,8 +65,8 @@
           <a class="mdl-navigation__link" href="{% url 'index' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
           <a class="mdl-navigation__link" href="{% url 'jogo:jogo_listar' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">gamepad</i>Jogos</a>
           <a class="mdl-navigation__link" href="{% url 'jogo:jogo_criar' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">add_to_photos</i>Add Jogo</a>
-          <a class="mdl-navigation__link" href="{% url 'index' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">view_list</i>Meus Jogos</a>
-          <a class="mdl-navigation__link" href="{% url 'solicitacao:solicitacao_listar' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">assignment</i>Solicitações</a>
+          <!-- <a class="mdl-navigation__link" href="{% url 'index' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">view_list</i>Meus Jogos</a> -->
+          <a class="mdl-navigation__link" href="{% url 'solicitacao:solicitar_listar' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">assignment</i>Solicitações</a>
 
 
         </nav>

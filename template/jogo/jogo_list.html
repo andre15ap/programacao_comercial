@@ -10,15 +10,26 @@
 	{{user.get_username}}
 {% endblock %}
 
+{% block busca %}
+
+{% endblock %}
+
 {% block content %}
 
 <div class="row">
   <div class="col s10 offset-s1 ">
 <ul class="collection with-header">
 
-<li class="collection-heade center-align"><h4>Buscar por jogos</h4></li>
-
+<li class="collection-heade row">
+	<div class="col s12">
+		<h4 class="center-align">Buscar por jogos</h4>
+	</div>
+	<div class="mdl-layout-spacer"></div>
 	{% if object_list %}
+
+</li>
+
+
 
 	<div class="row blue-grey-400">
 		<div class="col s4 center"><h5>Nome do Jogo</h5></div>
