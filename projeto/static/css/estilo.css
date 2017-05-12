@@ -7,6 +7,10 @@
   font-size: 25px;
 }
 
+.cor{
+  color: #311b92;
+  font-family: "Times New Roman";
+}
 .tam2{
   font-size: 20px;
   color: #311b92;
@@ -46,8 +50,8 @@
 
 .buscaplataforma{
   margin-top:10px;
-  
-  
+
+
 }
 
 .bucaplat{

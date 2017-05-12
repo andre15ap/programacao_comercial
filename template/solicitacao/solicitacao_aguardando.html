@@ -12,7 +12,7 @@
 {% block content %}
 <div class="row">
 
-	<h4 class="center-align">Aguardando Minha Resposta</h4>
+	<h4 class="center-align">Solicitações Aguardando Respostas</h4>
 
 <div class="col s10 offset-s1 ">
 	<table class="bordered responsive-table">
@@ -32,9 +32,8 @@
 				<td class="meuid">{{solicitacao.solicitante}}</td>
 				<td class="meuid">{{solicitacao.solicitado}}</td>
 				<td class="center">
-				   <a class="btn red" href="{% url 'solicitacao:recusar'%}?solicit={{solicitacao.id}}"><i class="material-icons right">delete</i>Recusar</a>
-				   <!-- <a class="btn blue" href="#"><i class="material-icons">border_color</i> trocar</a> -->
-					 <a  href="{% url 'jogo:jogo_troca'%}?solici={{solicitacao.id}}" method="get" class="btn  light-green accent-4"><i class="material-icons right">shuffle</i>trocar</a>
+				   <a class="btn red" href="{% url 'solicitacao:solicitar_deletar' solicitacao.id %}"><i class="material-icons">delete</i></a>
+				   <!-- <a class="btn blue" href="#"><i class="material-icons">border_color</i> </a> -->
 				</td>
 
 			</tr>

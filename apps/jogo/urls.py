@@ -13,5 +13,8 @@ urlpatterns = [
     url(r'^deletar/(?P<pk>\d+)$', login_required(views.JogoDelete.as_view()), name='jogo_deletar'),
     url(r'^ver/(?P<pk>\d+)$', login_required(views.JogoVer.as_view()), name='jogo_ver'),
     url(r'^veratual/(?P<pk>\d+)$', login_required(views.JogoVerAtual.as_view()), name='jogo_ver_atual'),
+    url(r'^troca$', login_required(views.JogoTroca.as_view()), name='jogo_troca'),
+    url(r'^vertroca$', login_required(views.JogoVerTroca.as_view()), name='jogo_ver_troca'),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.STATIC_ROOT)

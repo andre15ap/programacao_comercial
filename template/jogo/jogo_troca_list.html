@@ -1,0 +1,85 @@
+{% extends 'base/base.html' %}
+
+{% load staticfiles %}
+
+{% block titulo %}
+	Buscar por Jogos
+{% endblock %}
+
+{% block usuario %}
+	{{user.get_username}}
+{% endblock %}
+
+{% block busca %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col s10 offset-s1 ">
+<ul class="collection with-header">
+
+<li class="collection-heade row">
+	<div class="col s12">
+		<h4 class="center-align">Selecione o Jogo pra trocar por: {{solicitacao.jogo_solicitado.nome}}</h4>
+
+	</div>
+	<div class="mdl-layout-spacer"></div>
+	{% if object_list %}
+
+</li>
+
+	<div class="row blue-grey-400">
+		<div class="col s4 center"><h5>Nome do Jogo</h5></div>
+		<div class="col s4 center"><h5>Categoria</h5></div>
+		<div class="col s4 center"><h5>Plataforma</h5></div>
+	</div>
+
+
+	{% for jogo in object_list %}
+
+	  <a href="{% url 'jogo:jogo_ver_troca'%}?solic={{solicitacao.id}}&jogo_id={{jogo.id}}" method="get" class="collection-item">
+				<div class="row meuid">
+					<div class="col s4 ">
+						{% if jogo.image %}
+							<img src="{{ jogo.image.url }}" class="demo-avatar">
+						{% else %}
+							<img src="{% static 'img/image.png' %}" class="demo-avatar">
+						{% endif %}
+						<span class="black-text">{{jogo.nome}}</span></div>
+					<div class="col s4 ">
+
+						{{jogo.categoria}}
+
+					</div>
+					<div class="col s4 ">{{jogo.plataforma.nome}}</div>
+				</div>
+
+		</a>
+	{% endfor %}
+	{% else %}
+	<h2>Não há registros de jogos</h2>
+	{% endif %}
+</ul>
+
+</div>
+<!-- href="{% url 'jogo:jogo_buscar' %}?busca=pro" -->
+
+<!-- <div class="fixed-action-btn horizontal">
+	<a class="btn-floating btn-large red" >
+		<i class="large material-icons">search</i>
+	</a>
+	<ul>
+		<li>
+			<form class="buscando" action="{% url 'jogo:jogo_buscar' %}?busca" method="get">
+			<input placeholder="digite sua busca" name="busca" type="text" class="validate" style="font-size:20px;color:black;font-weight:bold">
+			</form>
+
+		</li>
+	</ul>
+</div> -->
+
+</div>
+
+{% endblock %}

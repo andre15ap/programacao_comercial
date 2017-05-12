@@ -21,8 +21,8 @@
 					 <div class="card-content white-text col l3">
 						 <!-- <div class="divider"></div> -->
 							 <div class="section inline">
-								{% if object.image %}
-								 <img class="minhaimg responsive-img" src="{{ object.image.url }}" >
+								{% if jogo.image %}
+								 <img class="minhaimg responsive-img" src="{{ jogo.image.url }}" >
 							 {% else %}
 								 <img class="minhaimg responsive-img" src="{% static 'img/image.png' %}">
 							 {% endif %}
@@ -31,27 +31,27 @@
 
            <div class="card-content white-text col l9">
 
-							<span class="card-title center">Jogo: {{object.nome}}</span></span>
+							<span class="card-title center">Jogo: {{jogo.nome}}</span></span>
 
               <div class="divider"></div>
               <div class="section">
-              <p><span class="tam">Usuario:</span><span class="tam2"> {{object.usuario.username}}&nbsp;&nbsp;{{object.usuario.last_name}}</span></p>
+              <p><span class="tam">Usuario:</span><span class="tam2"> {{jogo.usuario.username}}&nbsp;&nbsp;{{jogo.usuario.last_name}}</span></p>
               </div>
 
               <div class="divider"></div>
               <div class="section">
-                <p><span class="tam">Categoria: </span><span class="tam2">{{object.categoria}}</span> </p>
+                <p><span class="tam">Categoria: </span><span class="tam2">{{jogo.categoria}}</span> </p>
               </div>
 
               <div class="divider"></div>
               <div class="section">
-                <p><span class="tam">Plataforma: </span> <span class="tam2">{{object.plataforma.nome}}</span></p>
+                <p><span class="tam">Plataforma: </span> <span class="tam2">{{jogo.plataforma.nome}}</span></p>
               </div>
 
               <div class="divider"></div>
               <div class="section">
                 <p class="tam">Descrição do Jogo</p>
-                <p><span class="tam2">{{object.descricao}}</span></p>
+                <p><span class="tam2">{{jogo.descricao}}</span></p>
               </div>
            </div>
 
@@ -59,12 +59,10 @@
 				 <div class="divider"></div>
 				 <div class="row">
 					 <div class="card-action">
-			   <a class="btn" href="{% url 'jogo:jogo_listar' %}"><i class="material-icons right">highlight_off</i>Cancelar</a>
+			   <a class="btn" href="{% url 'jogo:jogo_troca'%}?solici={{solicitacao.id}}"><i class="material-icons right">highlight_off</i>Cancelar</a>
 
-				 <a  href="{% url 'solicitacao:solicitar' %}?jogo={{object.id}}" method="get" class="btn  light-green accent-4"><i class="material-icons right">shuffle</i>Solicitar</a>
-
-
-
+				 <a  href="{% url 'solicitacao:confirmar' %}?jogo_id={{jogo.id}}&solic={{solicitacao.id}}" method="get" class="btn  light-green accent-4"><i class="material-icons right">shuffle</i>Trocar por {{solicitacao.jogo_solicitado.nome}}</a>
+	
 			 </div>
 			</div>
 

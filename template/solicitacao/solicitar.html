@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load staticfiles %}
 
 {% block titulo %}
 	Listando Jogos
@@ -11,11 +12,36 @@
 
 {% block content %}
 
+<div class="row">
+       <div class="col s10 offset-s1 card">
+         <div class="card blue-grey lighten-1 row">
+	<h2 class="center-aling">Solicitacao Realizada com Sucesso!</h2>
+	<row>
+	<div class="card-content white-text col l3">
+		<!-- <div class="divider"></div> -->
+			<div class="section inline">
+			 {% if solicitacao.jogo_solicitado.image %}
+				<img class="minhaimg responsive-img" src="{{ solicitacao.jogo_solicitado.image.url }}" >
+			{% else %}
+				<img class="minhaimg responsive-img" src="{% static 'img/image.png' %}">
+			{% endif %}
+			</div>
+	</div>
 
-<h2>Jogo: {{solicitacao.jogo.nome}}</h2>
-<h2>solicitante {{solicitacao.solicitante}}</h2>
-<h2>solicitado {{solicitacao.solicitado}}</h2>
-<h2>estado {{solicitacao.estado}}</h2>
-
+	<div class="card-content white-text col l9">
+	<h3>Jogo: <span class="cor">{{solicitacao.jogo_solicitado.nome}}</span></h3>
+	<h3>Solicitante:<span class="cor"> {{solicitacao.solicitante}}</span></h3>
+	<h3>Solicitado:<span class="cor"> {{solicitacao.solicitado}}</span></h3>
+	<h3>Estado:<span class="cor"> {{solicitacao.estado}}</span></h3>
+</div>
+</row>
+<div class="row">
+	<div class="card-action">
+	<a class="btn blue center" href="{% url 'solicitacao:aguardando_listar' %}">Continuar</a>
+</div>
+</div>
+ </div>
+ </div>
+ </div>
 
 {% endblock %}
