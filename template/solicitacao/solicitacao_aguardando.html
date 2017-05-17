@@ -12,14 +12,14 @@
 {% block content %}
 <div class="row">
 
-	<h4 class="center-align">Solicitações Aguardando Respostas</h4>
+	<h4 class="center-align">Minhas Solicitações Aguardando Respostas</h4>
 
 <div class="col s10 offset-s1 ">
 	<table class="bordered responsive-table">
 		<thead>
 			<tr>
 				<td ><p><b>Nome do Jogo</b></p></td>
-				<td ><p><b>Solicitante</b></p></td>
+				<td ><p><b>Plataforma</b></p></td>
 				<td ><p><b>Solicitado</b></p></td>
 				<td ><p><b><h6 class="center">Ações</h6></p></b></td>
 			</tr>
@@ -29,11 +29,11 @@
 		{% for solicitacao in object_list %}
 			<tr>
 				<td class="meuid">{{solicitacao.jogo_solicitado.nome}}</td>
-				<td class="meuid">{{solicitacao.solicitante}}</td>
+				<td class="meuid">{{solicitacao.jogo_solicitado.plataforma}}</td>
 				<td class="meuid">{{solicitacao.solicitado}}</td>
 				<td class="center">
-				   <a class="btn red" href="{% url 'solicitacao:solicitar_deletar' solicitacao.id %}"><i class="material-icons">delete</i></a>
-				   <!-- <a class="btn blue" href="#"><i class="material-icons">border_color</i> </a> -->
+
+				   <a title="Excluir solicitação" class="btn red" href="{% url 'solicitacao:solicitar_deletar' solicitacao.id %}"><i class="material-icons">delete</i> </a>
 				</td>
 
 			</tr>
@@ -45,6 +45,12 @@
 		</tbody>
 	</table>
 
+
+	<div class="fixed-action-btn horizontal">
+		<a title="historico" class="btn-floating btn-large orange" href="{% url 'solicitacao:solicitar_historico' %}">
+			<i class="material-icons">history</i>
+		</a>
+	</div>
 </div>
 
 </div>

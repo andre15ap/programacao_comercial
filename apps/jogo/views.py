@@ -16,7 +16,9 @@ class JogoList(ListView):
 	template_name = 'jogo/jogo_list.html'
 
 	def get_queryset(self):
-		return Jogo.objects.exclude(usuario = self.request.user).order_by('nome')
+		return Jogo.objects.exclude(
+			Q(usuario = self.request.user) |
+			Q(solicitado = True)).order_by('nome')
 
 class JogoBusca(ListView):
 	model = Jogo
@@ -29,7 +31,7 @@ class JogoBusca(ListView):
 			Q(nome__icontains=busca) |
 			Q(categoria__icontains=busca)
 
-		)
+		).exclude(solicitado = True)
 
 
 
@@ -100,6 +102,7 @@ class JogoCreate(CreateView):
 	def form_valid(self, form):
 		obj = form.save(commit=False)
 		obj.usuario = self.request.user
+		obj.solicitado = False
 		obj.save()
 		return HttpResponseRedirect(self.success_url)
 

@@ -1,0 +1,54 @@
+{% extends 'base/base.html' %}
+
+{% block titulo %}
+	Listando Jogos
+{% endblock %}
+
+{% block usuario %}
+	{{user.get_username}}
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+
+	<h4 class="center-align">Meu Historico de Solicitações</h4>
+
+<div class="col s10 offset-s1 ">
+	<table class="bordered responsive-table">
+		<thead>
+			<tr>
+				<td ><p><b>Jogo Solicitado</b></p></td>
+				<td ><p><b>Trocado Por</b></p></td>
+				<td ><p><b>Solicitado</b></p></td>
+				<td ><p><b>Estado</p></b></td>
+			</tr>
+		</thead>
+		<tbody>
+		{% if object_list %}
+		{% for solicitacao in object_list %}
+			<tr>
+				<td class="meuid">{{solicitacao.jogo_solicitado.nome}}</td>
+				{% if solicitacao.jogo_escolhido %}
+				<td class="meuid">{{solicitacao.jogo_escolhido.nome}}</td>
+				{% else %}
+				<td class="meuid">''</td>
+				{% endif %}
+				<td class="meuid">{{solicitacao.solicitado}}</td>
+				<td class="meuid">{{solicitacao.estado}}</td>
+			</tr>
+			{% endfor %}
+			{% else %}
+			<h2>Não há registros de Solicitações</h2>
+
+			{% endif %}
+		</tbody>
+	</table>
+
+</div>
+
+</div>
+
+
+
+{% endblock %}

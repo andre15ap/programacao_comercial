@@ -11,6 +11,7 @@ class Jogo(models.Model):
 	nome = models.CharField(max_length = 50)
 	categoria = models.CharField(max_length = 50)
 	descricao = models.CharField(max_length = 100)
+	solicitado = models.BooleanField()
 	plataforma = models.ForeignKey(plataforma, null=False, blank=True, on_delete=models.CASCADE)
 	usuario = models.ForeignKey(User, null=False, blank=True, on_delete=models.CASCADE)
 	image = models.ImageField('Imagem',upload_to='imagens',blank="True")
